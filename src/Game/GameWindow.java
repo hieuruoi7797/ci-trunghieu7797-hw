@@ -211,7 +211,7 @@ public class GameWindow extends JFrame{
 
         for (int i = 0; i < numberOfEnemy ; i++) {
 
-        
+
             Enemy enemy= new Enemy();
             enemy = listOfEnemy.get(i);
             enemy.render(backBufferGraphics2D);
