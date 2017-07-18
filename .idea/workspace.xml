@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2701edb7-6b3d-461d-a128-a4bebab19870" name="Default" comment="update class oop&#10;update spell">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Game/enemy/Bullet.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ci-begin/FooBar.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FooBar.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/Game/GameWindow$1.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/Game/GameWindow$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/Game/GameWindow$2.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/Game/GameWindow$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/Game/GameWindow.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/Game/GameWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/Game/player/Player.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/Game/player/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/Game/player/PlayerSpell.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/Game/player/PlayerSpell.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/GameWindow.java" afterPath="$PROJECT_DIR$/src/Game/GameWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/enemy/Enemy.java" afterPath="$PROJECT_DIR$/src/Game/enemy/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/player/Player.java" afterPath="$PROJECT_DIR$/src/Game/player/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/player/PlayerSpell.java" afterPath="$PROJECT_DIR$/src/Game/player/PlayerSpell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Program.java" afterPath="$PROJECT_DIR$/src/Program.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tklibs/Mathx.java" afterPath="$PROJECT_DIR$/src/tklibs/Mathx.java" />
-    </list>
+    <list default="true" id="2701edb7-6b3d-461d-a128-a4bebab19870" name="Default" comment="update class oop&#10;update spell" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -736,7 +720,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-57" y="121" width="1382" height="784" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -748,7 +731,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288889" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3288889" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288889" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
