@@ -11,7 +11,6 @@ public class Program {
         gameWindow.loop();
 
 
-
     }}
 
 

@@ -1,18 +1,16 @@
 package Game;
 
+import Game.bases.Contraints;
+import Game.enemy.Bullet;
 import Game.enemy.Enemy;
 import Game.player.Player;
 import Game.player.PlayerSpell;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by Admin on 7/9/2017.
@@ -26,26 +24,27 @@ public class GameWindow extends JFrame{
     boolean downPressed;
     boolean xPressed;
     int backgroundY;
-
-
-
+    ArrayList<Enemy> listOfEnemies = new ArrayList<>();
+    ArrayList<Bullet> bullets = new ArrayList<>();
     Player player = new Player();
     ArrayList<PlayerSpell> playerSpells = new ArrayList<>();
-    ArrayList<Enemy> listOfEnemy = new ArrayList<>();
+    Enemy enemy = new Enemy();
     BufferedImage backBufferImage;
     Graphics2D backBufferGraphics2D;
-    private int i;
-    private int numberOfEnemy = 3;
+
+
 
 
     public GameWindow(){
         setupWindow();
         loadImages();
 
+        Contraints contraints = new Contraints(0, this.getHeight(),0, background.getWidth());
+        player.setContraints(contraints);
+        player.position.set(background.getWidth()/2,this.getHeight() - 50) ;
 
-        player.x = background.getWidth()/2;
         backgroundY = this.getHeight()-background.getHeight();
-        player.y = this.getHeight()-player.image.getHeight();
+
         backBufferImage = new BufferedImage(this.getWidth(),this.getHeight(), BufferedImage.TYPE_INT_ARGB);
         backBufferGraphics2D = (Graphics2D) backBufferImage.getGraphics();
         setupInputs();
@@ -119,43 +118,25 @@ public class GameWindow extends JFrame{
 
     }
 
+    long lastUpdateTime;
+
     public void loop(){
         while(true){
-            try {
 
-                Thread.sleep(17);
-
-
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - lastUpdateTime > 17) {
+                lastUpdateTime = currentTime;
                 run();
-
                 render();
 
-
-
-
-
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        }
-    }
+
+
+            }}
 
     private void run(){
-
-        if (backgroundY <=0) {
-            backgroundY++;}
-
-            for (int i = 0; i < 3; i++) {
-                Enemy enemy = new Enemy();
-
-                enemy.image = Utils.loadImage("assets/images/enemies/level0/pink/0.png");
-
-                listOfEnemy.add(enemy);
-            }
-
+        if (backgroundY <=0)
+            backgroundY += 5;
 
         int dx = 0;
         int dy = 0;
@@ -173,65 +154,67 @@ public class GameWindow extends JFrame{
         if (downPressed){
             dy +=3;
         }
-        if (xPressed) {
-
-            // Create New
-            PlayerSpell playerSpell = new PlayerSpell();
-
-            //Config
-            playerSpell.x = player.x;
-            playerSpell.y = player.y;
-            playerSpell.image = Utils.loadImage("assets/images/player-spells/a/1.png");
-            //Add to ArrayList
-
-            playerSpells.add(playerSpell);
-
+        if (xPressed){
+           player.castSpell(playerSpells);
         }
+
 
 
 
         player.move(dx, dy);
+        player.coolDown();
         for (PlayerSpell playerSpell: playerSpells){
-
             playerSpell.move();
         }
-        for (Enemy enemy:listOfEnemy) {
-            enemy.move();
 
+        enemy.printEnemy(listOfEnemies);
+        enemy.coolDownEnemy();
+        for (Enemy enemy:listOfEnemies)
+              {
+                  enemy.move();
+                  enemy.shot(bullets);
+                  enemy.coolDownBullet();
+                  for (Bullet bullet:bullets)
+                        {
+                      bullet.move();
+                  }
         }
 
-    }
 
-    private void render() throws IOException {
+
+
+
+
+    }
+    private void render() {
         backBufferGraphics2D.setColor(Color.BLACK);
         backBufferGraphics2D.fillRect(0,0,this.getWidth(),this.getHeight());
 
         backBufferGraphics2D.drawImage(background,0, backgroundY,null);
         player.render(backBufferGraphics2D);
 
-        for (int i = 0; i < numberOfEnemy ; i++) {
-
-
-            Enemy enemy= new Enemy();
-            enemy = listOfEnemy.get(i);
-            enemy.render(backBufferGraphics2D);
-
-            }
 
 
 
         for (PlayerSpell playerSpell : playerSpells){
-
             playerSpell.render(backBufferGraphics2D);
-
         }
+
+        for (Enemy enemy:listOfEnemies){
+            enemy.render(backBufferGraphics2D);
+            for (Bullet bullet : bullets){
+                bullet.render(backBufferGraphics2D);
+            }
+        }
+
+
 
         Graphics2D g2d= (Graphics2D)this.getGraphics();
         g2d.drawImage(backBufferImage, 0, 0, null);
     }
 
     private void loadImages() {
-        player.image = Utils.loadImage("assets/images/players/straight/0.png");
+
         background = Utils.loadImage("assets/images/background/0.png");
 
     }

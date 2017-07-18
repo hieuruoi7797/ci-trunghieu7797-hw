@@ -15,7 +15,7 @@ public class Mathx {
 //     * @param f = currentime / time [0 1]
 //     * @return
 //     */
-//    public static Vector2D lerp(Vector2D origin, Vector2D destination, double f) {
+//    public static Game.bases.Vector2D lerp(Game.bases.Vector2D origin, Game.bases.Vector2D destination, double f) {
 //        return origin.multiply(1  - f).add(destination.multiply(f));
 //    }
 
