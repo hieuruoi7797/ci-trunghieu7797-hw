@@ -174,10 +174,11 @@ public class GameWindow extends JFrame{
                   enemy.move();
                   enemy.shot(bullets);
                   enemy.coolDownBullet();
-                  for (Bullet bullet:bullets)
-                        {
-                      bullet.move();
-                  }
+
+        }
+        for (Bullet bullet:bullets)
+        {
+            bullet.move();
         }
 
 

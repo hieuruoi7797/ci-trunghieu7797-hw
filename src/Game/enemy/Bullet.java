@@ -22,7 +22,7 @@ public class Bullet  {
     }
 
     public void move(){
-        this.position.addUp(0, 5);
+        this.position.addUp(0, 10);
     }
     public void render(Graphics2D g2d){
         imageRenderer.render(g2d, this.position);

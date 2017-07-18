@@ -30,7 +30,7 @@ public class Enemy {
     }
 
     public void move() {
-        this.position.addUp(0, 10 );
+        this.position.addUp(0, 3 );
     }
 
     public void render(Graphics2D g2d){
