@@ -1,8 +1,7 @@
-package Game.bases;
+package game.bases;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 
 /**
  * Created by Admin on 7/16/2017.
