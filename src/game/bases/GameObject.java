@@ -11,11 +11,14 @@ public class GameObject {
     public  Vector2D position;
     public  ImageRenderer renderer;
 
-    private static Vector<GameObject> gameObjects = new Vector<>();
-    private static Vector<GameObject> newGameObjects = new Vector<>();
+    public static Vector<GameObject> gameObjects = new Vector<>();
+    public static Vector<GameObject> newGameObjects = new Vector<>();
 
     public static void add(GameObject gameObject){
         newGameObjects.add(gameObject);
+    }
+    public static void remove( GameObject gameObject){
+        newGameObjects.remove(gameObject);
     }
 
     public static void renderall(Graphics2D g2d){

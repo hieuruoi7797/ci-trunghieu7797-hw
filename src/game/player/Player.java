@@ -11,9 +11,10 @@ public class Player extends GameObject {
 
     Contraints contraints;
     FrameCounter coolDownCounter;
-    boolean spellDisabled;
+    boolean spellDisabled=true  ;
     Vector2D velocity;
     InputManager inputManager ;
+
     public Player(){
         this.velocity = new Vector2D();
         this.coolDownCounter = new FrameCounter(17);//17 frames = 300 miliseconds to cool down
@@ -58,10 +59,13 @@ public class Player extends GameObject {
     public void castSpell() {
         //cast spell
         if (inputManager.xPressed) {
-            PlayerSpell playerSpell = new PlayerSpell();
-            playerSpell.position.set(this.position.add(0, -20));
-            GameObject.add(playerSpell);
+
+                PlayerSpell playerSpell = new PlayerSpell();
+                playerSpell.position.set(this.position.add(0, -20));
+                GameObject.add(playerSpell);
+
         }
+
     }
 
     public void coolDown(){
@@ -73,7 +77,8 @@ public class Player extends GameObject {
                 coolDownCounter.reset();
             }
         }
-
+//        System.out.println(spellDisabled);
+//
         }
     }
 

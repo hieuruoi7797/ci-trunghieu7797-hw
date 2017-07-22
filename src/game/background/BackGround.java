@@ -16,35 +16,32 @@ import java.awt.image.RenderedImage;
 public class BackGround extends GameObject {
 
     private float backgroundY;
-
     public BackGround(){
+
         this.renderer = new ImageRenderer(Utils.loadImage("assets/images/background/0.png"));
         this.position.x = 0;
         this.position.y = 0;
+        GameObject.add(this);
+        backgroundY = 600 - this.renderer.image.getHeight();
+        this.position.x += this.renderer.image.getWidth()/2;
     }
      @Override
      public void run(){
         if (backgroundY<0){
             backgroundY++;
+            this.position.y = backgroundY + this.renderer.image.getHeight()/2;
         }
      }
 
 
 
-    public void addBackGround(GameWindow gameWindow) {
-        this.position.x += this.renderer.image.getWidth()/2;
-        this.position.y += this.renderer.image.getHeight()/2;
 
-        backgroundY = gameWindow.getHeight()-this.renderer.image.getHeight();
-
-        this.position.x += this.renderer.image.getWidth()/2;
-        this.position.y += this.renderer.image.getHeight()/2;
-
-
+//        this.position.x += this.renderer.image.getWidth()/2;
+//        this.position.y += this.renderer.image.getHeight()/2;
     }
 
 
-}
+
 
 
 

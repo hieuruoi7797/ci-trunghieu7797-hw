@@ -3,6 +3,7 @@ package game;
 import game.background.BackGround;
 import game.bases.Contraints;
 import game.bases.GameObject;
+import game.enemies.Bullet;
 import game.enemies.EnemySpawner;
 import game.inputs.InputManager;
 import game.player.Player;
@@ -20,17 +21,11 @@ public class GameWindow extends JFrame{
     BufferedImage backBufferImage;
     public Graphics2D backBufferGraphics2D;
     InputManager inputManager = new InputManager() ;
-    BackGround backGround = new BackGround();
+    BackGround   backGround = new BackGround();
 
-
-    int backgroundY;
 
 //    Player player = new Player();
 //    ArrayList<PlayerSpell> playerSpells = new ArrayList<>();
-
-
-
-
     public GameWindow(){
         setupWindow();
 
@@ -39,7 +34,6 @@ public class GameWindow extends JFrame{
 
         backBufferImage = new BufferedImage(this.getWidth(),this.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
-        backGround.addBackGround(this);
 
 //        backgroundY = this.getHeight()-background.getHeight();
         backBufferImage = new BufferedImage(this.getWidth(),this.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -50,9 +44,15 @@ public class GameWindow extends JFrame{
 
 
 
+    private  void addBackGround(){
+        GameObject.add(backGround);
+    }
 
     private void addEnemySpawner() {
-        GameObject.add(new EnemySpawner());
+        for (int i = 0; i <3 ; i++) {
+            GameObject.add(new EnemySpawner());
+        }
+
     }
 
     private void addPlayer() {
@@ -86,6 +86,7 @@ public class GameWindow extends JFrame{
 //            backgroundY ++;
 //
         GameObject.runall();
+
     }
     private void render() {
         backBufferGraphics2D.setColor(Color.BLACK);
