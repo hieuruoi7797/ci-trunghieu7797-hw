@@ -79,7 +79,9 @@ public class Player extends GameObject {
     public void castSpell() {
         //cast spell
         if (inputManager.xPressed) {
-
+            PlayerSpell playerSpell = new PlayerSpell();
+            playerSpell.position.set(this.position.add(0, -20));
+            GameObject.add(playerSpell);
         }
     }
 
