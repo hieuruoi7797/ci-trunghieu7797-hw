@@ -1,8 +1,13 @@
-package game.player;
+package Game.player;
 
-import game.Utils;
-import game.bases.*;
-import game.inputs.InputManager;
+import Game.Utils;
+import Game.bases.*;
+import Game.dragonball.DragonBall;
+import Game.inputs.InputManager;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  * Created by Admin on 7/11/2017.
@@ -11,27 +16,39 @@ public class Player extends GameObject {
 
     Contraints contraints;
     FrameCounter coolDownCounter;
-    boolean spellDisabled=true  ;
+    boolean spellDisabled;
     Vector2D velocity;
-    InputManager inputManager ;
+    InputManager inputManager;
+    boolean ballDisabled = false ;
+    DragonBall dragonBall1 ;
+    DragonBall dragonBall2 ;
+    public static Player instance;
 
-    public Player(){
+    public Player() {
+        if (ballDisabled==false){
+            dragonBall1 = new DragonBall();
+            dragonBall2 = new DragonBall();
+            GameObject.add(dragonBall1);
+            GameObject.add(dragonBall2);
+        }
         this.velocity = new Vector2D();
         this.coolDownCounter = new FrameCounter(17);//17 frames = 300 miliseconds to cool down
         this.renderer = new ImageRenderer(Utils.loadAssetImage("players/straight/0.png"));
-
+        instance = this;
     }
 
     @Override
-    public void run(){
+    public void run(Vector2D parentPosition) {
+        super.run(parentPosition);
+        dragonBall1.setPosition(1);
+        dragonBall2.setPosition(2);
         move();
         castSpell();
         coolDown();
     }
 
-    private void move() {
+    public void move() {
         this.velocity.set(0, 0);
-
         if (inputManager.leftPressed)
             this.velocity.x -= 10;
         if (inputManager.rightPressed)
@@ -44,15 +61,18 @@ public class Player extends GameObject {
         this.contraints.make(this.position);
     }
 
-
-    public void setInputManager(InputManager inputManager){
+    public void setInputManager(InputManager inputManager) {
         this.inputManager = inputManager;
-
     }
 
     //Method: phuong thuc
+    public void move(int dx, int dy) {
+        this.position.addUp(dx, dy);
+        contraints.make(this.position);
+    }
+
     //setter
-    public void setContraints(Contraints contraints){
+    public void setContraints(Contraints contraints) {
         this.contraints = contraints;
     }
 
@@ -60,27 +80,23 @@ public class Player extends GameObject {
         //cast spell
         if (inputManager.xPressed) {
 
-                PlayerSpell playerSpell = new PlayerSpell();
-                playerSpell.position.set(this.position.add(0, -20));
-                GameObject.add(playerSpell);
-
         }
-
     }
 
-    public void coolDown(){
+    public void coolDown() {
         if (spellDisabled) {
             //cooldown
             boolean status = coolDownCounter.run();
-            if (status) {
+            if (status) { PlayerSpell playerSpell = new PlayerSpell();
+                playerSpell.position.set(this.position.add(0, -20));
+                GameObject.add(playerSpell);
                 spellDisabled = false;
                 coolDownCounter.reset();
             }
         }
-//        System.out.println(spellDisabled);
-//
-        }
+
     }
+}
 
 
 //    public BufferedImage image;

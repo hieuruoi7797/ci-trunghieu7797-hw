@@ -1,4 +1,4 @@
-package game.bases;
+package Game.bases;
 
 import tklibs.Mathx;
 

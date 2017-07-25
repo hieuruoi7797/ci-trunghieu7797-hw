@@ -1,13 +1,16 @@
-package game.bases;
+package Game.bases;
+
+import java.util.Vector;
 
 /**
  * Created by Admin on 7/16/2017.
  */
 public class Vector2D {
 
+    public static Vector2D ZERO = new Vector2D(0,0);
     public float x;
     public float y;
-
+  ;
     @Override
     public String toString() {
         return "Vector2D{" +
@@ -39,6 +42,11 @@ public class Vector2D {
         return add(other.x, other.y);
     }
 
+    public Vector2D subtract (float x, float y){
+        return new Vector2D(this.x - x, this.y - y);
+    }
+
+
     public Vector2D multiply(int x) {
         Vector2D vectorMulti = new Vector2D();
         vectorMulti.x = this.x * x;
@@ -52,10 +60,8 @@ public class Vector2D {
     }
 
     public Vector2D normalize() {
-        Vector2D vectorNormal = new Vector2D();
-        vectorNormal.x = (this.x)/(this.magnitude());
-        vectorNormal.y = (this.y)/(this.magnitude());
-        return vectorNormal;
+        float legth = (float) Math.sqrt(x * x + y * y);
+        return new Vector2D(x / legth, y / legth);
     }
 
     public Vector2D cloneVector(){

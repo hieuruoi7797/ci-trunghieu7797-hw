@@ -1,6 +1,7 @@
-package game.inputs;
+package Game.inputs;
 
 import java.awt.event.KeyEvent;
+import java.security.Key;
 
 /**
  * Created by Admin on 7/18/2017.

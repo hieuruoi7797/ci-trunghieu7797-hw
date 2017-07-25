@@ -1,4 +1,4 @@
-package game.bases;
+package Game.bases;
 
 /**
  * Created by Admin on 7/16/2017.
