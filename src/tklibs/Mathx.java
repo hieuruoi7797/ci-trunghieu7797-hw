@@ -15,7 +15,7 @@ public class Mathx {
 //     * @param f = currentime / time [0 1]
 //     * @return
 //     */
-//    public static Game.bases.Vector2D lerp(Game.bases.Vector2D origin, Game.bases.Vector2D destination, double f) {
+//    public static game.bases.Vector2D lerp(game.bases.Vector2D origin, game.bases.Vector2D destination, double f) {
 //        return origin.multiply(1  - f).add(destination.multiply(f));
 //    }
 
@@ -31,6 +31,6 @@ public class Mathx {
         return value;
     }
     public static boolean inRange(float value, float min, float max){
-        return value > min && value < max;
+        return value >= min && value <= max;
     }
 }

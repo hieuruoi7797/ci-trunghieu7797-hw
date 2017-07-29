@@ -1,6 +1,4 @@
-import Game.GameWindow;
-
-import java.util.ArrayList;
+import game.GameWindow;
 
 /**
  * Created by Admin on 7/4/2017.

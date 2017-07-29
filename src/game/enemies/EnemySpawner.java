@@ -1,7 +1,7 @@
-package Game.enemies;
+package game.enemies;
 
-import Game.bases.GameObject;
-import Game.bases.Vector2D;
+import game.bases.GameObject;
+import game.bases.Vector2D;
 
 /**
  * Created by Admin on 7/18/2017.

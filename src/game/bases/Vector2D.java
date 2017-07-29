@@ -1,6 +1,4 @@
-package Game.bases;
-
-import java.util.Vector;
+package game.bases;
 
 /**
  * Created by Admin on 7/16/2017.
