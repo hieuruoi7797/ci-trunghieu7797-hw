@@ -7,6 +7,9 @@ import game.bases.renderers.Animation;
 import game.bases.renderers.ImageRenderer;
 import game.player.Player;
 import game.scenes.Explosion;
+import tklibs.AudioUtils;
+
+import javax.sound.sampled.Clip;
 
 /**
  * Created by Admin on 7/23/2017.
@@ -16,6 +19,7 @@ public class Enemy extends GameObject implements PhysicsBody {
     FrameCounter shootCounter;
     BoxCollider boxCollider;
     Explosion explosion;
+    private Clip shootSound;
 
     public Enemy(){
         super();
@@ -50,6 +54,8 @@ public class Enemy extends GameObject implements PhysicsBody {
         EnemyBullet enemyBullet = GameObjectPool.recyle(EnemyBullet.class);
         enemyBullet.velocity.set(bulletVeclocity);
         enemyBullet.position.set(this.position);
+        shootSound = AudioUtils.loadSound("assets/music/sfx/enemy-explosion.wav");
+        shootSound.start();
     }
 
 

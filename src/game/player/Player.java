@@ -4,6 +4,9 @@ import game.Utils;
 import game.bases.*;
 import game.bases.renderers.ImageRenderer;
 import game.inputs.InputManager;
+import tklibs.AudioUtils;
+
+import javax.sound.sampled.Clip;
 
 /**
  * Created by Admin on 7/11/2017.
@@ -17,6 +20,7 @@ public class Player extends GameObject {
     InputManager inputManager;
 
     public static Player instance;
+    private Clip castSpellSound;
 
     public Player() {
         this.velocity = new Vector2D();
@@ -69,6 +73,8 @@ public class Player extends GameObject {
         if (inputManager.xPressed && !spellDisabled) {
             PlayerSpell playerSpell = GameObjectPool.recyle(PlayerSpell.class);
             playerSpell.position.set(this.position.add(0, -20));
+            castSpellSound = AudioUtils.loadSound("assets/music/sfx/player-shoot.wav");
+            castSpellSound.start();
             spellDisabled = true;
         }
     }

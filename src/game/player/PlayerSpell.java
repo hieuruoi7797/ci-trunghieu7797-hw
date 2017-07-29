@@ -46,7 +46,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody {
         if (hitEnemy != null) {
             hitEnemy.isActive = false;
             this.isActive = false;
-            sound = AudioUtils.loadSound("assets/music/sfx/enemy-explosion.wav");
+            sound = AudioUtils.loadSound("assets/music/sfx/enemy-explosion-big.wav");
             sound.start();
             explosion.setPosition(this);
             GameObject.add(explosion);
