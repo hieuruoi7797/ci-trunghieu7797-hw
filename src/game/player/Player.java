@@ -2,7 +2,9 @@ package game.player;
 
 import game.Utils;
 import game.bases.*;
+import game.bases.physics.PhysicsBody;
 import game.bases.renderers.ImageRenderer;
+import game.enemies.EnemyExplosion;
 import game.inputs.InputManager;
 import tklibs.AudioUtils;
 
@@ -11,30 +13,39 @@ import javax.sound.sampled.Clip;
 /**
  * Created by Admin on 7/11/2017.
  */
-public class Player extends GameObject {
+public class Player extends GameObject implements PhysicsBody {
 
     Contraints contraints;
     FrameCounter coolDownCounter;
     boolean spellDisabled;
     Vector2D velocity;
     InputManager inputManager;
+    private PlayerAnimator animator;
+    BoxCollider boxCollider;
 
     public static Player instance;
-    private Clip castSpellSound;
 
     public Player() {
         this.velocity = new Vector2D();
         this.coolDownCounter = new FrameCounter(17);//17 frames = 300 miliseconds to cool down
-        this.renderer = new ImageRenderer(Utils.loadAssetImage("players/straight/0.png"));
+        this.animator = new PlayerAnimator();
+        this.renderer = animator;
         instance = this;
+        this.boxCollider = new BoxCollider(20,20);
+        this.children.add(boxCollider);
     }
 
     @Override
     public void run(Vector2D parentPosition) {
         super.run(parentPosition);
+        animate();
         move();
         castSpell();
         coolDown();
+    }
+
+    private void animate() {
+        animator.run(this);
     }
 
     private void move() {
@@ -73,8 +84,7 @@ public class Player extends GameObject {
         if (inputManager.xPressed && !spellDisabled) {
             PlayerSpell playerSpell = GameObjectPool.recyle(PlayerSpell.class);
             playerSpell.position.set(this.position.add(0, -20));
-            castSpellSound = AudioUtils.loadSound("assets/music/sfx/player-shoot.wav");
-            castSpellSound.start();
+
             spellDisabled = true;
         }
     }
@@ -89,7 +99,20 @@ public class Player extends GameObject {
             }
         }
     }
-}
+
+    @Override
+    public BoxCollider getBoxCollider() {
+        return boxCollider ;
+    }
+
+    public void getHit(int damage) {
+            this.isActive = false;
+            PlayerExplosion playerExplosion = GameObjectPool.recyle(PlayerExplosion.class);
+            playerExplosion.position.set(this.position);
+        }
+
+    }
+
 
 
 //    public BufferedImage image;

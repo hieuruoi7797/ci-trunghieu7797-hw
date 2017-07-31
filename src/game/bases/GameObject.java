@@ -72,6 +72,10 @@ public class GameObject {
         }
     }
 
+    public void refresh() {
+        isActive = true;
+    }
+
     public void setActive(boolean b) {
         this.isActive = b;
     }

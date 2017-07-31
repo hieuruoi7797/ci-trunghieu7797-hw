@@ -7,6 +7,7 @@ import game.enemies.EnemySpawner;
 import game.inputs.InputManager;
 import game.player.Player;
 import game.scenes.BackGround;
+import game.scenes.Setting;
 import javafx.embed.swing.JFXPanel;
 import tklibs.AudioUtils;
 
@@ -24,18 +25,14 @@ public class GameWindow extends JFrame {
     BufferedImage backBufferImage;
     Graphics2D backBufferGraphics2D;
     BackGround background;
-    InputManager inputManager = new InputManager();
-    final JFXPanel fxPanel = new JFXPanel();
-
-
-    int backgroundY;
-
+    Setting setting = new Setting();
+//    final JFXPanel fxPanel = new JFXPanel();
 //    Player player = new Player();
 //    ArrayList<PlayerSpell> playerSpells = new ArrayList<>();
 
 
     public GameWindow() {
-        setupWindow();
+        setting.setupWindow(this);
         loadImages();
         addBackGround();
         addPlayer();
@@ -43,7 +40,7 @@ public class GameWindow extends JFrame {
         backBufferImage = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
         backBufferGraphics2D = (Graphics2D) backBufferImage.getGraphics();
         this.setVisible(true);
-        AudioUtils.playMedia("assets/music/1.mp3");
+//        AudioUtils.playMedia("assets/music/1.mp3");
     }
 
     private void addBackGround() {
@@ -53,15 +50,12 @@ public class GameWindow extends JFrame {
     }
 
     private void addEnemySpawner() {
-        Enemy enemy = new Enemy();
-        enemy.position.set(background.getWidth() / 2, 0);
-        GameObject.add(enemy);
         GameObject.add(new EnemySpawner());
     }
 
     private void addPlayer() {
         Player player = new Player();
-        player.setInputManager(inputManager);
+        player.setInputManager(setting.getInputManager());
         player.setContraints(new Contraints(20, this.getHeight(), 0, background.getWidth()));
         player.position.set(background.getWidth() / 2, this.getHeight() - 50);
         GameObject.add(player);
@@ -98,33 +92,6 @@ public class GameWindow extends JFrame {
     private void loadImages() {
     }
 
-    private void setupWindow() {
-        this.setSize(600, 600);
-        this.setResizable(false);
-        this.setTitle("game do hoi - cover by HieuRuoi");
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-                super.windowClosing(e);
-            }
-        });
-        this.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                inputManager.keyPressed(e);
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                inputManager.keyReleased(e);
-            }
-        });
-    }
 
     @Override
     public void paint(Graphics g) {

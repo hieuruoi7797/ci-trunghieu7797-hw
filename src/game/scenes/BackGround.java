@@ -9,7 +9,7 @@ import game.bases.Vector2D;
  * Created by Admin on 7/23/2017.
  */
 public class BackGround extends GameObject {
-    private ImageRenderer imageRenderer;
+    private static ImageRenderer imageRenderer;
 
     public BackGround() {
         super();
@@ -18,11 +18,11 @@ public class BackGround extends GameObject {
         this.renderer = imageRenderer;
 
     }
-    public float getWidth(){
-        return this.imageRenderer.getWidth();
+    public static float getWidth(){
+        return imageRenderer.getWidth();
     }
-    public float getHeight(){
-        return  this.imageRenderer.getHeight();
+    public static float getHeight(){
+        return imageRenderer.getHeight();
     }
 
     @Override
